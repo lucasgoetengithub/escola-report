@@ -69,17 +69,108 @@
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="79" splitType="Stretch"/>
-	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="60" splitType="Stretch">
+			<image>
+				<reportElement x="20" y="11" width="130" height="49" uuid="06323aba-6623-484f-802d-408be46a83af"/>
+				<imageExpression><![CDATA["logo_empresa.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="170" y="16" width="294" height="29" uuid="962d9f30-11ea-4f72-b878-93f218c37801"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de alunos da escola]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="-1" y="2" width="161" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="754b3cb4-5611-4bfc-aec7-7a964b6719f7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4a888c38-75ca-42f8-aed1-813de0095fbd"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="160" y="2" width="61" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="fc032215-c1ac-4d49-9dcc-fe885054052a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9d09f9ea-9f3a-4d5e-8ea7-691ec6f27e64"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="221" y="2" width="111" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="2adf74d6-8c01-46d3-afd8-f6c5f13f9f5c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ddfa83de-b0ed-4053-a22c-9e58bba9a755"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de nascimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="332" y="2" width="111" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="39c52b9d-bc04-4ad9-b689-82dd563f3645">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c6a0d48c-9ff5-4009-b67a-7977c7e0a999"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="443" y="2" width="111" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="17a29ff0-a48a-40cb-8f23-87c0d01cfb25">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="130d8094-6330-434e-816e-2b3157611f96"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="15" splitType="Stretch">
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="0" width="160" height="15" uuid="ffd359ea-3506-427d-bc21-8fbd59f8cc8b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4a888c38-75ca-42f8-aed1-813de0095fbd"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="0" width="62" height="15" uuid="0622c0fe-6edb-4d7f-9c7b-a3bee38b685e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9d09f9ea-9f3a-4d5e-8ea7-691ec6f27e64"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="222" y="0" width="111" height="15" uuid="01ce0c15-5619-475a-adee-53dff0876732">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ddfa83de-b0ed-4053-a22c-9e58bba9a755"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="0" width="111" height="15" uuid="2b7a7bf5-e6a4-40cb-95bf-83a028cc3e68">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c6a0d48c-9ff5-4009-b67a-7977c7e0a999"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="0" width="111" height="15" uuid="57b620f8-f4fe-4630-b9f3-477ef3a167f7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="130d8094-6330-434e-816e-2b3157611f96"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
