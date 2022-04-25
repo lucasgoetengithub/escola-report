@@ -3,8 +3,21 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="aluno_escola" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="864e1232-1be1-49bc-9326-354d7623f556">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql Curso"/>
+	<parameter name="P_ALUNO_ID" class="java.lang.Integer"/>
+	<parameter name="P_TURMA_ID" class="java.lang.Integer"/>
 	<queryString language="SQL">
-		<![CDATA[select a.* from aluno a]]>
+		<![CDATA[select a.* ,
+(
+	select d.nome from turma t
+	join disciplina d on d.disciplina_id = t.disciplina_id
+	where t.turma_id = $P{P_TURMA_ID} 
+) nome_disciplina
+from aluno a
+where ($P{P_ALUNO_ID} is null or a.aluno_id =  $P{P_ALUNO_ID})
+and ($P{P_TURMA_ID} is null or exists(
+	select * from aluno_turma at
+	where at.turma_id = $P{P_TURMA_ID} 
+))]]>
 	</queryString>
 	<field name="aluno_id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="aluno_id"/>
@@ -66,22 +79,32 @@
 		<property name="com.jaspersoft.studio.field.label" value="descricao"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
 	</field>
+	<field name="nome_disciplina" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome_disciplina"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome_disciplina"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="60" splitType="Stretch">
+		<band height="66" splitType="Stretch">
 			<image>
 				<reportElement x="20" y="11" width="130" height="49" uuid="06323aba-6623-484f-802d-408be46a83af"/>
 				<imageExpression><![CDATA["logo_empresa.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="170" y="16" width="294" height="29" uuid="962d9f30-11ea-4f72-b878-93f218c37801"/>
+				<reportElement x="170" y="0" width="294" height="30" uuid="962d9f30-11ea-4f72-b878-93f218c37801"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Relatório de alunos da escola]]></text>
+				<text><![CDATA[Relatório de alunos da escola
+]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="170" y="30" width="294" height="30" uuid="bd29a161-501c-467e-91b7-03ef25431561"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA["<b>Turma: </b>" + ($F{nome_disciplina} != null ? $F{nome_disciplina} : "Todas") ]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
