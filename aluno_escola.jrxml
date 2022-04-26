@@ -3,6 +3,20 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="aluno_escola" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="864e1232-1be1-49bc-9326-354d7623f556">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql Curso"/>
+	<style name="Cor do Sexo">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{sexo}.equals("M")]]></conditionExpression>
+			<style forecolor="#47A644" markup="" isBold="true"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{sexo}.equals("F")]]></conditionExpression>
+			<style forecolor="#F51B34" isBold="true"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{sexo}.equals("X")]]></conditionExpression>
+			<style forecolor="#FA7116" isBold="true"/>
+		</conditionalStyle>
+	</style>
 	<parameter name="P_ALUNO_ID" class="java.lang.Integer"/>
 	<parameter name="P_TURMA_ID" class="java.lang.Integer"/>
 	<queryString language="SQL">
@@ -116,7 +130,7 @@ and ($P{P_TURMA_ID} is null or exists(
 	<columnHeader>
 		<band height="26" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="-1" y="2" width="161" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="754b3cb4-5611-4bfc-aec7-7a964b6719f7">
+				<reportElement mode="Opaque" x="3" y="2" width="161" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="754b3cb4-5611-4bfc-aec7-7a964b6719f7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4a888c38-75ca-42f8-aed1-813de0095fbd"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -125,7 +139,7 @@ and ($P{P_TURMA_ID} is null or exists(
 				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="160" y="2" width="50" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="fc032215-c1ac-4d49-9dcc-fe885054052a">
+				<reportElement mode="Opaque" x="164" y="2" width="50" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="fc032215-c1ac-4d49-9dcc-fe885054052a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9d09f9ea-9f3a-4d5e-8ea7-691ec6f27e64"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -134,7 +148,7 @@ and ($P{P_TURMA_ID} is null or exists(
 				<text><![CDATA[Sexo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="210" y="2" width="111" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="2adf74d6-8c01-46d3-afd8-f6c5f13f9f5c">
+				<reportElement mode="Opaque" x="214" y="2" width="111" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="2adf74d6-8c01-46d3-afd8-f6c5f13f9f5c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ddfa83de-b0ed-4053-a22c-9e58bba9a755"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -143,7 +157,7 @@ and ($P{P_TURMA_ID} is null or exists(
 				<text><![CDATA[Data de nascimento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="321" y="2" width="79" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="39c52b9d-bc04-4ad9-b689-82dd563f3645">
+				<reportElement mode="Opaque" x="325" y="2" width="79" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="39c52b9d-bc04-4ad9-b689-82dd563f3645">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c6a0d48c-9ff5-4009-b67a-7977c7e0a999"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -152,7 +166,7 @@ and ($P{P_TURMA_ID} is null or exists(
 				<text><![CDATA[Cidade]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="400" y="2" width="111" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="17a29ff0-a48a-40cb-8f23-87c0d01cfb25">
+				<reportElement mode="Opaque" x="404" y="2" width="111" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="17a29ff0-a48a-40cb-8f23-87c0d01cfb25">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="130d8094-6330-434e-816e-2b3157611f96"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -161,7 +175,7 @@ and ($P{P_TURMA_ID} is null or exists(
 				<text><![CDATA[Estado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="511" y="2" width="34" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="6901e5b8-3d5b-4969-b2ea-9bff98c77aa6">
+				<reportElement mode="Opaque" x="515" y="2" width="34" height="19" forecolor="#050505" backcolor="#E0DEDE" uuid="6901e5b8-3d5b-4969-b2ea-9bff98c77aa6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="130d8094-6330-434e-816e-2b3157611f96"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -174,42 +188,42 @@ and ($P{P_TURMA_ID} is null or exists(
 	<detail>
 		<band height="34" splitType="Stretch">
 			<textField textAdjust="StretchHeight">
-				<reportElement x="0" y="0" width="160" height="15" uuid="ffd359ea-3506-427d-bc21-8fbd59f8cc8b">
+				<reportElement x="3" y="0" width="160" height="15" uuid="ffd359ea-3506-427d-bc21-8fbd59f8cc8b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4a888c38-75ca-42f8-aed1-813de0095fbd"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="160" y="0" width="50" height="15" uuid="0622c0fe-6edb-4d7f-9c7b-a3bee38b685e">
+				<reportElement style="Cor do Sexo" x="163" y="0" width="50" height="15" uuid="0622c0fe-6edb-4d7f-9c7b-a3bee38b685e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9d09f9ea-9f3a-4d5e-8ea7-691ec6f27e64"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle" markup="styled"/>
 				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="211" y="0" width="111" height="15" uuid="01ce0c15-5619-475a-adee-53dff0876732">
+				<reportElement x="214" y="0" width="111" height="15" uuid="01ce0c15-5619-475a-adee-53dff0876732">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ddfa83de-b0ed-4053-a22c-9e58bba9a755"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="322" y="0" width="78" height="15" uuid="2b7a7bf5-e6a4-40cb-95bf-83a028cc3e68">
+				<reportElement x="325" y="0" width="78" height="15" uuid="2b7a7bf5-e6a4-40cb-95bf-83a028cc3e68">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c6a0d48c-9ff5-4009-b67a-7977c7e0a999"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{cidade}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="0" width="111" height="15" uuid="57b620f8-f4fe-4630-b9f3-477ef3a167f7">
+				<reportElement x="403" y="0" width="111" height="15" uuid="57b620f8-f4fe-4630-b9f3-477ef3a167f7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="130d8094-6330-434e-816e-2b3157611f96"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="511" y="0" width="34" height="15" uuid="ae4e6353-850a-480a-932c-f79b23da6333"/>
+				<reportElement x="514" y="0" width="34" height="15" uuid="ae4e6353-850a-480a-932c-f79b23da6333"/>
 				<textFieldExpression><![CDATA[$V{idade}]]></textFieldExpression>
 			</textField>
 		</band>
